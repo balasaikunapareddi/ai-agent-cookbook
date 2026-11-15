@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+*.egg-info/
+build/
+dist/
+
+# Data and local state
+*.db
+*.sqlite3
+.env
+.env.*
+
+# Editors and OS
+.DS_Store
+.idea/
+.vscode/
