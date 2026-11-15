@@ -11,6 +11,7 @@ dist/
 # Data and local state
 *.db
 *.sqlite3
+state/
 .env
 .env.*
 

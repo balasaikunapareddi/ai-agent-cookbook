@@ -34,8 +34,19 @@ recipe's README shows its one command and what it demonstrates.
 
 ### 🚀 Advanced
 
-*Production-grade agent patterns, built as standalone repos. The
-cookbook links out — it never duplicates them.*
+*Production-grade agent patterns. Some live here in the cookbook; the
+rest are standalone repos linked below — the cookbook never duplicates
+one of those.*
+
+**In the cookbook:**
+
+- [advanced/prior-auth-agent](advanced/prior-auth-agent) — A prior
+  authorization request tracker: a deterministic state machine that
+  holds state across days of waiting and resumes exactly where it
+  left off — never re-asking for a document, never guessing at a
+  clinical detail. 4 mock cases, 13 tests.
+
+**Standalone repos:**
 
 - [agent-appointment-scheduler](https://github.com/balasaikunapareddi/agent-appointment-scheduler) — Production scheduling agent: live CMS NPI Registry search, FastAPI system of record, policy-as-code guardrails, deterministic crisis screen.
 - [agent-eligibility-claims](https://github.com/balasaikunapareddi/agent-eligibility-claims) — Healthcare eligibility and claims agent: four deterministic MCP tools, idempotent submissions, cost estimates from pure Python.
@@ -68,6 +79,7 @@ make demo-mcp    # MCP vs UTCP side-by-side
 make demo-csv    # ask-your-CSV
 make demo-post   # LinkedIn post → code
 make demo-brief  # meeting brief agent
+make demo-prior-auth  # prior-auth tracker
 ```
 
 ## Why this cookbook

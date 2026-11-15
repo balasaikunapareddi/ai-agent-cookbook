@@ -1,8 +1,8 @@
-.PHONY: test demo-mcp demo-csv demo-post demo-brief
+.PHONY: test demo-mcp demo-csv demo-post demo-brief demo-prior-auth
 
 # Run every recipe's tests (needs pytest: pip install pytest).
 test:
-	python3 -m pytest starter -q
+	python3 -m pytest starter advanced -q
 
 # One-command demos, one per recipe (no key, no extra deps).
 demo-mcp:
@@ -16,3 +16,6 @@ demo-post:
 
 demo-brief:
 	cd starter/meeting-brief-agent && python3 demo.py
+
+demo-prior-auth:
+	cd advanced/prior-auth-agent && python3 demo.py
