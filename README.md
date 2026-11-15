@@ -30,6 +30,7 @@ recipe's README shows its one command and what it demonstrates.
 - [starter/mcp-vs-utcp](starter/mcp-vs-utcp) — Do you need a server in front of every API? One orders API, two paths: direct calls let a $10,000 refund sail through, a thin policy gateway stops it.
 - [starter/ask-your-csv](starter/ask-your-csv) — Plain-English questions over a spreadsheet: totals, averages, top N, filters — answered by a deterministic planner, no model required.
 - [starter/linkedin-post-to-code](starter/linkedin-post-to-code) — Paste a LinkedIn-style AI post, get back a runnable code sketch and a test outline. The post-to-code loop in miniature.
+- [starter/meeting-brief-agent](starter/meeting-brief-agent) — Paste a meeting invite, walk in prepared: purpose, who's there, agenda, questions to ask — and what's missing, flagged honestly instead of invented.
 
 ### 🚀 Advanced
 
@@ -66,6 +67,7 @@ make test        # every recipe's tests
 make demo-mcp    # MCP vs UTCP side-by-side
 make demo-csv    # ask-your-CSV
 make demo-post   # LinkedIn post → code
+make demo-brief  # meeting brief agent
 ```
 
 ## Why this cookbook

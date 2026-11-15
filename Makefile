@@ -1,4 +1,4 @@
-.PHONY: test demo-mcp demo-csv demo-post
+.PHONY: test demo-mcp demo-csv demo-post demo-brief
 
 # Run every recipe's tests (needs pytest: pip install pytest).
 test:
@@ -13,3 +13,6 @@ demo-csv:
 
 demo-post:
 	cd starter/linkedin-post-to-code && python3 demo.py
+
+demo-brief:
+	cd starter/meeting-brief-agent && python3 demo.py
