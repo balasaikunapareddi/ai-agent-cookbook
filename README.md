@@ -45,6 +45,11 @@ one of those.*
   holds state across days of waiting and resumes exactly where it
   left off — never re-asking for a document, never guessing at a
   clinical detail. 4 mock cases, 13 tests.
+- [advanced/exactly-once-tool-agent](advanced/exactly-once-tool-agent) — Exactly-once
+  tool execution: idempotency keys plus a replayable ledger, so a
+  retry after a lost response replays the stored result instead of
+  double-booking or double-charging. Includes the broken path for
+  contrast. 11 tests.
 
 **Standalone repos:**
 

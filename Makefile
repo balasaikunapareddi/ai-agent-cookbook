@@ -1,4 +1,4 @@
-.PHONY: test demo-mcp demo-csv demo-post demo-brief demo-prior-auth
+.PHONY: test demo-mcp demo-csv demo-post demo-brief demo-prior-auth demo-exactly-once
 
 # Run every recipe's tests (needs pytest: pip install pytest).
 test:
@@ -19,3 +19,6 @@ demo-brief:
 
 demo-prior-auth:
 	cd advanced/prior-auth-agent && python3 demo.py
+
+demo-exactly-once:
+	cd advanced/exactly-once-tool-agent && python3 demo.py
