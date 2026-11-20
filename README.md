@@ -10,6 +10,19 @@ for the basics.
 
 > 📬 New recipes drop weekly.
 
+## 🌐 Try it live
+
+**[LIVE_URL](LIVE_URL)** — every recipe demo runs in your browser:
+click a recipe, watch it work, nothing to install. Mock data, no
+API key.
+
+Prefer local? The same UI runs from the repo:
+
+```bash
+pip install -r web/requirements.txt
+uvicorn web.app:app --reload        # http://127.0.0.1:8000
+```
+
 ## 🚀 Run one now
 
 ```bash
@@ -45,11 +58,11 @@ one of those.*
   holds state across days of waiting and resumes exactly where it
   left off — never re-asking for a document, never guessing at a
   clinical detail. 4 mock cases, 13 tests.
-- [advanced/exactly-once-tool-agent](advanced/exactly-once-tool-agent) — Exactly-once
-  tool execution: idempotency keys plus a replayable ledger, so a
-  retry after a lost response replays the stored result instead of
-  double-booking or double-charging. Includes the broken path for
-  contrast. 11 tests.
+- [advanced/deja-vu-agent](advanced/deja-vu-agent) — Deja Vu Agent:
+  exactly-once tool execution — idempotency keys plus a replayable
+  ledger, so a retry after a lost response replays the stored result
+  instead of double-booking or double-charging. Includes the broken
+  path for contrast. 11 tests.
 
 **Standalone repos:**
 
@@ -85,6 +98,8 @@ make demo-csv    # ask-your-CSV
 make demo-post   # LinkedIn post → code
 make demo-brief  # meeting brief agent
 make demo-prior-auth  # prior-auth tracker
+make demo-deja-vu     # Deja Vu Agent (exactly-once tools)
+make web              # cookbook web UI on http://127.0.0.1:8000
 ```
 
 ## Why this cookbook

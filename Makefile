@@ -1,8 +1,12 @@
-.PHONY: test demo-mcp demo-csv demo-post demo-brief demo-prior-auth demo-exactly-once
+.PHONY: test demo-mcp demo-csv demo-post demo-brief demo-prior-auth demo-deja-vu web
 
 # Run every recipe's tests (needs pytest: pip install pytest).
 test:
-	python3 -m pytest starter advanced -q
+	python3 -m pytest starter advanced web -q
+
+# Cookbook web UI: every demo in the browser (needs web/requirements.txt).
+web:
+	uvicorn web.app:app --reload
 
 # One-command demos, one per recipe (no key, no extra deps).
 demo-mcp:
@@ -20,5 +24,5 @@ demo-brief:
 demo-prior-auth:
 	cd advanced/prior-auth-agent && python3 demo.py
 
-demo-exactly-once:
-	cd advanced/exactly-once-tool-agent && python3 demo.py
+demo-deja-vu:
+	cd advanced/deja-vu-agent && python3 demo.py

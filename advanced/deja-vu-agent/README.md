@@ -1,4 +1,6 @@
-# Exactly-once tool agent: the timeout lied to you
+# Deja Vu Agent: the timeout lied to you
+
+> ▶️ **Try it live:** [LIVE_URL/recipes/deja-vu-agent](LIVE_URL/recipes/deja-vu-agent) — runs in your browser, nothing to install.
 
 ## The idea
 

@@ -3,6 +3,8 @@
 **Graduated from** the [linkedin-ai-lab](https://github.com/balasaikunapareddi/linkedin-ai-lab)
 entry of 2026-11-02, where this started as a LinkedIn post.
 
+> ▶️ **Try it live:** [LIVE_URL/recipes/mcp-vs-utcp](LIVE_URL/recipes/mcp-vs-utcp) — runs in your browser, nothing to install.
+
 ## The idea
 
 The post asks whether every API needs an MCP server in front of it.

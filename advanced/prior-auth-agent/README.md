@@ -1,5 +1,7 @@
 # Prior-auth agent: the wait is the job
 
+> ▶️ **Try it live:** [LIVE_URL/recipes/prior-auth-agent](LIVE_URL/recipes/prior-auth-agent) — runs in your browser, nothing to install.
+
 ## The idea
 
 Prior authorization is not a form. It is a wait. A request can sit

@@ -1,5 +1,7 @@
 # Ask your CSV: plain-English questions over a spreadsheet
 
+> ▶️ **Try it live:** [LIVE_URL/recipes/ask-your-csv](LIVE_URL/recipes/ask-your-csv) — runs in your browser, nothing to install.
+
 ## The idea
 
 Spreadsheets are where small-business answers live, and most people

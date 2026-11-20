@@ -1,0 +1,8 @@
+# The cookbook web UI. The recipes themselves are standard-library
+# only in mock mode — this is everything the UI needs.
+fastapi
+uvicorn
+python-multipart  # form posts (question / post / invite inputs)
+
+# Test-only (FastAPI's TestClient needs httpx):
+#   pip install httpx pytest

@@ -1,5 +1,7 @@
 # Meeting brief agent: paste an invite, walk in prepared
 
+> ▶️ **Try it live:** [LIVE_URL/recipes/meeting-brief-agent](LIVE_URL/recipes/meeting-brief-agent) — runs in your browser, nothing to install.
+
 ## The idea
 
 Most meetings go sideways in the first five minutes — not because

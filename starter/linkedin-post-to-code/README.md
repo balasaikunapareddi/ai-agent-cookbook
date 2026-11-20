@@ -1,5 +1,7 @@
 # LinkedIn post → code: the post-to-code loop in miniature
 
+> ▶️ **Try it live:** [LIVE_URL/recipes/linkedin-post-to-code](LIVE_URL/recipes/linkedin-post-to-code) — runs in your browser, nothing to install.
+
 ## The idea
 
 Bala's loop: post an AI idea on LinkedIn, then implement it as a

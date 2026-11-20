@@ -9,6 +9,6 @@ The in-cookbook advanced recipes live here too:
 built on a deterministic state machine that holds state across days
 of waiting. It teaches the long-lived workflow pattern at cookbook
 scale, where the starter recipes teach single-turn patterns.
-[exactly-once-tool-agent](exactly-once-tool-agent) — idempotency
-keys and an execution ledger so a retried tool call runs exactly
-once, even when the first attempt timed out after committing.
+[deja-vu-agent](deja-vu-agent) — Deja Vu Agent: idempotency keys
+and an execution ledger so a retried tool call runs exactly once,
+even when the first attempt timed out after committing.
