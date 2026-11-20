@@ -1,6 +1,6 @@
 # Meeting brief agent: paste an invite, walk in prepared
 
-> ▶️ **Try it live:** [LIVE_URL/recipes/meeting-brief-agent](LIVE_URL/recipes/meeting-brief-agent) — runs in your browser, nothing to install.
+> ▶️ **Try it live:** [https://ai-agent-cookbook.onrender.com/recipes/meeting-brief-agent](https://ai-agent-cookbook.onrender.com/recipes/meeting-brief-agent) — runs in your browser, nothing to install.
 
 ## The idea
 

@@ -1,6 +1,6 @@
 # Prior-auth agent: the wait is the job
 
-> ▶️ **Try it live:** [LIVE_URL/recipes/prior-auth-agent](LIVE_URL/recipes/prior-auth-agent) — runs in your browser, nothing to install.
+> ▶️ **Try it live:** [https://ai-agent-cookbook.onrender.com/recipes/prior-auth-agent](https://ai-agent-cookbook.onrender.com/recipes/prior-auth-agent) — runs in your browser, nothing to install.
 
 ## The idea
 

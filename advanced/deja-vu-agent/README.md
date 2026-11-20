@@ -1,6 +1,6 @@
 # Deja Vu Agent: the timeout lied to you
 
-> ▶️ **Try it live:** [LIVE_URL/recipes/deja-vu-agent](LIVE_URL/recipes/deja-vu-agent) — runs in your browser, nothing to install.
+> ▶️ **Try it live:** [https://ai-agent-cookbook.onrender.com/recipes/deja-vu-agent](https://ai-agent-cookbook.onrender.com/recipes/deja-vu-agent) — runs in your browser, nothing to install.
 
 ## The idea
 

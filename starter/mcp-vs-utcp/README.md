@@ -3,7 +3,7 @@
 **Graduated from** the [linkedin-ai-lab](https://github.com/balasaikunapareddi/linkedin-ai-lab)
 entry of 2026-11-02, where this started as a LinkedIn post.
 
-> ▶️ **Try it live:** [LIVE_URL/recipes/mcp-vs-utcp](LIVE_URL/recipes/mcp-vs-utcp) — runs in your browser, nothing to install.
+> ▶️ **Try it live:** [https://ai-agent-cookbook.onrender.com/recipes/mcp-vs-utcp](https://ai-agent-cookbook.onrender.com/recipes/mcp-vs-utcp) — runs in your browser, nothing to install.
 
 ## The idea
 

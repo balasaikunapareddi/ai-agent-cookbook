@@ -1,6 +1,6 @@
 # LinkedIn post → code: the post-to-code loop in miniature
 
-> ▶️ **Try it live:** [LIVE_URL/recipes/linkedin-post-to-code](LIVE_URL/recipes/linkedin-post-to-code) — runs in your browser, nothing to install.
+> ▶️ **Try it live:** [https://ai-agent-cookbook.onrender.com/recipes/linkedin-post-to-code](https://ai-agent-cookbook.onrender.com/recipes/linkedin-post-to-code) — runs in your browser, nothing to install.
 
 ## The idea
 

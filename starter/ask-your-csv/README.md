@@ -1,6 +1,6 @@
 # Ask your CSV: plain-English questions over a spreadsheet
 
-> ▶️ **Try it live:** [LIVE_URL/recipes/ask-your-csv](LIVE_URL/recipes/ask-your-csv) — runs in your browser, nothing to install.
+> ▶️ **Try it live:** [https://ai-agent-cookbook.onrender.com/recipes/ask-your-csv](https://ai-agent-cookbook.onrender.com/recipes/ask-your-csv) — runs in your browser, nothing to install.
 
 ## The idea
 

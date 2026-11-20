@@ -12,7 +12,7 @@ for the basics.
 
 ## 🌐 Try it live
 
-**[LIVE_URL](LIVE_URL)** — every recipe demo runs in your browser:
+**[https://ai-agent-cookbook.onrender.com](https://ai-agent-cookbook.onrender.com)** — every recipe demo runs in your browser:
 click a recipe, watch it work, nothing to install. Mock data, no
 API key.
 
