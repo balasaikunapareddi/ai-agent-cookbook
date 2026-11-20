@@ -10,13 +10,11 @@ for the basics.
 
 > 📬 New recipes drop weekly.
 
-## 🌐 Try it live
+## 🌐 Run it in your browser (local UI)
 
-**[https://ai-agent-cookbook.onrender.com](https://ai-agent-cookbook.onrender.com)** — every recipe demo runs in your browser:
-click a recipe, watch it work, nothing to install. Mock data, no
-API key.
-
-Prefer local? The same UI runs from the repo:
+Every recipe also runs in a local web UI: click a recipe, type your
+own inputs, watch the agent work. Mock data, no API key. Run it from
+the repo:
 
 ```bash
 pip install -r web/requirements.txt

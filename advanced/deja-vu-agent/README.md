@@ -1,6 +1,6 @@
 # Deja Vu Agent: the timeout lied to you
 
-> ▶️ **Try it live:** [https://ai-agent-cookbook.onrender.com/recipes/deja-vu-agent](https://ai-agent-cookbook.onrender.com/recipes/deja-vu-agent) — runs in your browser, nothing to install.
+> ▶️ **Run it:** one command from this folder (see below) — mock data, no API key. Prefer a browser? The cookbook's local web UI runs every recipe; see the [root README](../../README.md).
 
 ## The idea
 

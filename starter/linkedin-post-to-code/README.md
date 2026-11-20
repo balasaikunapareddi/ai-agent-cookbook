@@ -1,6 +1,6 @@
 # LinkedIn post → code: the post-to-code loop in miniature
 
-> ▶️ **Try it live:** [https://ai-agent-cookbook.onrender.com/recipes/linkedin-post-to-code](https://ai-agent-cookbook.onrender.com/recipes/linkedin-post-to-code) — runs in your browser, nothing to install.
+> ▶️ **Run it:** one command from this folder (see below) — mock data, no API key. Prefer a browser? The cookbook's local web UI runs every recipe; see the [root README](../../README.md).
 
 ## The idea
 

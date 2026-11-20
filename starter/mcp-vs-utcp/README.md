@@ -3,7 +3,7 @@
 **Graduated from** the [linkedin-ai-lab](https://github.com/balasaikunapareddi/linkedin-ai-lab)
 entry of 2026-11-02, where this started as a LinkedIn post.
 
-> ▶️ **Try it live:** [https://ai-agent-cookbook.onrender.com/recipes/mcp-vs-utcp](https://ai-agent-cookbook.onrender.com/recipes/mcp-vs-utcp) — runs in your browser, nothing to install.
+> ▶️ **Run it:** one command from this folder (see below) — mock data, no API key. Prefer a browser? The cookbook's local web UI runs every recipe; see the [root README](../../README.md).
 
 ## The idea
 
