@@ -79,29 +79,35 @@ def _call_with_retries(journal, label, tool_name, tool, key, store,
     raise RuntimeError(f"{label}: still timing out after {max_retries} attempts.")
 
 
-def run_agent(world, store, use_idempotency=True, max_retries=3):
+def run_agent(world, store, use_idempotency=True, max_retries=3,
+              patient=PATIENT, slot=SLOT, copay_cents=COPAY_CENTS):
     """Book the appointment and charge the copay, surviving timeouts.
 
     Returns {"booking": ..., "charge": ..., "journal": [...]}.
     In idempotent mode ``store`` is the ledger; in unsafe mode it
     is ignored (pass None) — that absence is the bug being shown.
+    The scenario (patient, slot, copay) defaults to the demo's;
+    callers may pass their own — the idempotency keys are derived
+    from whatever intent is passed in.
     """
     journal = []
-    book = flaky_book_appointment(world, PATIENT, SLOT)
-    charge = flaky_charge_payment(world, PATIENT, COPAY_CENTS)
+    book = flaky_book_appointment(world, patient, slot)
+    charge = flaky_charge_payment(world, patient, copay_cents)
+    booking_key = f"book:{patient}:{slot}"
+    charge_key = f"charge:{patient}:copay:{slot}"
 
     mode = "idempotent" if use_idempotency else "NO idempotency"
     _note(journal, "start",
-          f"Agent starting ({mode}): book {SLOT} for {PATIENT}, "
-          f"then charge the ${COPAY_CENTS / 100:.2f} copay.")
+          f"Agent starting ({mode}): book {slot} for {patient}, "
+          f"then charge the ${copay_cents / 100:.2f} copay.")
 
     booking = _call_with_retries(
         journal, "book_appointment", "book_appointment", book,
-        BOOKING_KEY, store, use_idempotency, world.lookup, max_retries,
+        booking_key, store, use_idempotency, world.lookup, max_retries,
     )
     charge_record = _call_with_retries(
         journal, "charge_payment", "charge_payment", charge,
-        CHARGE_KEY, store, use_idempotency, world.lookup, max_retries,
+        charge_key, store, use_idempotency, world.lookup, max_retries,
     )
 
     _note(journal, "done",

@@ -33,7 +33,7 @@ for _path in _RECIPE_DIRS:
 # --- recipe modules (imported after the path setup above) -----------
 from decision import needs_protocol_layer  # noqa: E402
 from direct_client import DirectClient  # noqa: E402
-from native_api import NativeAPI  # noqa: E402
+from native_api import ORDERS, NativeAPI  # noqa: E402
 from policy_gateway import PolicyError, PolicyGateway  # noqa: E402
 
 import ask_csv  # noqa: E402
@@ -88,6 +88,16 @@ _CASES_PATH = os.path.join(
 )
 
 PRIOR_AUTH_CASE_IDS = ["PA-1001", "PA-1002", "PA-1003", "PA-1004"]
+
+# The mock orders the mcp-vs-utcp recipe ships with: (id, total).
+MCP_ORDERS = [(oid, order["total"]) for oid, order in ORDERS.items()]
+
+# deja-vu-agent scenario defaults (the recipe's own constants).
+DEJA_VU_DEFAULTS = {
+    "patient": "patient-123 (mock)",
+    "slot": "2026-11-25T09:00",
+    "copay": "25.00",
+}
 
 # The prompt each recipe sends its model in live mode (--live),
 # copied verbatim from the recipe's *_live function, with the
@@ -177,6 +187,48 @@ def run_mcp_vs_utcp():
         has_side_effects=True, api_has_auth=True, api_has_audit_log=False,
         api_validates_inputs=False, multiple_agent_consumers=True)
     lines.append(f"refund tool on this API: {refunding}")
+    return "\n".join(lines)
+
+
+def run_mcp_vs_utcp_try(order_id="A-103", amount=10000.0, approved=False):
+    """One refund attempt, both paths — the interactive version.
+
+    The same call goes direct (UTCP-style) and through the policy
+    gateway (MCP-style), using the recipe's real client/gateway
+    classes on fresh API instances. The gateway's audit log is
+    shown at the end; the direct path keeps none.
+    """
+    if order_id not in ORDERS:
+        return f"No such order: {order_id}. Pick one of: {', '.join(ORDERS)}."
+    if amount is None or amount <= 0:
+        return "Enter a refund amount greater than $0 and try again."
+    total = ORDERS[order_id]["total"]
+    lines = [
+        f"Refund attempt: ${amount:,.2f} on order {order_id} "
+        f"(order total ${total:,.2f}), "
+        f"human-approved: {'yes' if approved else 'no'}",
+        "",
+        "=== Direct (UTCP-style): agent -> native API ===",
+    ]
+    api_key = "demo-key"
+    direct = DirectClient(NativeAPI(api_key), api_key)
+    lines.append(
+        f"create_refund -> {direct.call_tool('create_refund', order_id=order_id, amount=amount)}"
+    )
+    lines.append("audit trail kept by the API about *who/why*: none")
+    lines.append("")
+    lines.append("=== Wrapped (MCP-style): agent -> gateway -> native API ===")
+    gateway = PolicyGateway(NativeAPI(api_key), api_key)
+    try:
+        result = gateway.call_tool(
+            "create_refund", order_id=order_id, amount=amount,
+            approved=approved)
+        lines.append(f"create_refund -> {result}")
+    except PolicyError as exc:
+        lines.append(f"create_refund -> rejected: {exc}")
+    lines.append("audit log:")
+    for entry in gateway.audit_log:
+        lines.append(f"   {entry}")
     return "\n".join(lines)
 
 
@@ -270,11 +322,12 @@ def run_prior_auth(case_id=None):
 
 # --- advanced/deja-vu-agent -----------------------------------------
 
-def _deja_vu_safe(state_dir):
+def _deja_vu_safe(state_dir, patient, slot, copay_cents):
     lines = ["# With idempotency keys + ledger (the fix)", ""]
     world = MockWorld()
     store = IdempotencyStore(os.path.join(state_dir, "ledger.json"))
-    result = run_agent(world, store, use_idempotency=True)
+    result = run_agent(world, store, use_idempotency=True,
+                       patient=patient, slot=slot, copay_cents=copay_cents)
     lines.append(render_journal(result["journal"]))
     lines.append("")
     lines.append(render_world(world))
@@ -291,10 +344,11 @@ def _deja_vu_safe(state_dir):
     return "\n".join(lines)
 
 
-def _deja_vu_unsafe():
+def _deja_vu_unsafe(patient, slot, copay_cents):
     lines = ["# Without idempotency (the bug)", ""]
     world = MockWorld()
-    result = run_agent(world, None, use_idempotency=False)
+    result = run_agent(world, None, use_idempotency=False,
+                       patient=patient, slot=slot, copay_cents=copay_cents)
     lines.append(render_journal(result["journal"]))
     lines.append("")
     lines.append(render_world(world))
@@ -309,12 +363,41 @@ def _deja_vu_unsafe():
     return "\n".join(lines)
 
 
-def run_deja_vu(path=None):
-    """Both paths (demo default), or just 'safe' / 'unsafe'."""
+def run_deja_vu(path=None, patient=None, slot=None, copay_cents=None):
+    """Both paths (demo default), or just 'safe' / 'unsafe'.
+
+    The scenario defaults to the recipe's own constants; the web
+    form may pass a patient / slot / copay of the visitor's choosing.
+    """
+    patient = patient or DEJA_VU_DEFAULTS["patient"]
+    slot = slot or DEJA_VU_DEFAULTS["slot"]
+    if copay_cents is None:
+        copay_cents = 2500
     chunks = []
     if path != "unsafe":
         with tempfile.TemporaryDirectory(prefix="deja-vu-web-") as state_dir:
-            chunks.append(_deja_vu_safe(state_dir))
+            chunks.append(_deja_vu_safe(state_dir, patient, slot, copay_cents))
     if path != "safe":
-        chunks.append(_deja_vu_unsafe())
+        chunks.append(_deja_vu_unsafe(patient, slot, copay_cents))
     return ("\n\n" + "=" * 60 + "\n\n").join(chunks)
+
+
+# --- sample runs (what the output looks like, before you press Run) --
+
+def run_sample(slug):
+    """The canned default run for a recipe — shown on page load in a
+    clearly labeled 'Sample run' section. Fresh runs come from the
+    form, never from page load."""
+    if slug == "mcp-vs-utcp":
+        return run_mcp_vs_utcp()
+    if slug == "ask-your-csv":
+        return run_ask_csv()
+    if slug == "linkedin-post-to-code":
+        return run_post_to_code(SAMPLE_POSTS[0])
+    if slug == "meeting-brief-agent":
+        return run_meeting_brief(SAMPLE_INVITE_TEXT)
+    if slug == "prior-auth-agent":
+        return run_prior_auth()
+    if slug == "deja-vu-agent":
+        return run_deja_vu()
+    raise ValueError(f"unknown recipe: {slug}")
