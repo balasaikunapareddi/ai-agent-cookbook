@@ -64,10 +64,29 @@ one of those.*
 
 **Standalone repos:**
 
+Healthcare:
+
 - [agent-appointment-scheduler](https://github.com/balasaikunapareddi/agent-appointment-scheduler) — Production scheduling agent: live CMS NPI Registry search, FastAPI system of record, policy-as-code guardrails, deterministic crisis screen.
 - [agent-eligibility-claims](https://github.com/balasaikunapareddi/agent-eligibility-claims) — Healthcare eligibility and claims agent: four deterministic MCP tools, idempotent submissions, cost estimates from pure Python.
+- [agent-clinical-inference](https://github.com/balasaikunapareddi/agent-clinical-inference) — Seven-agent clinical data pipeline (arXiv:2507.18115): deterministic state machine, local PII anonymizer, interpretable predictions on synthetic data. Research demo, not for clinical use.
+
+Production patterns:
+
+- [agent-support-resolution](https://github.com/balasaikunapareddi/agent-support-resolution) — Support tickets resolved behind policy-as-code: classify → retrieve → draft → confidence gate → human approval queue, with a full audit trail. Risky replies never auto-send.
+- [agent-research-pipeline](https://github.com/balasaikunapareddi/agent-research-pipeline) — Multi-agent research with a fact-check gate: a planner fans out to parallel researchers, every claim is verified against its source before the writer cites it. Checkpointed, resumable, cost-ledgered.
+- [agent-code-review](https://github.com/balasaikunapareddi/agent-code-review) — PR review that is measured, not vibed: deterministic static checks plus structured LLM review with severity and confidence, scored on seeded bugs (recall/precision).
 - [agent-policy-gateway](https://github.com/balasaikunapareddi/agent-policy-gateway) — The MCP vs UTCP gateway, generalized: declarative rules, money-transfer caps, deny-lists, role checks, full audit log.
 - [agent-idempotency-kit](https://github.com/balasaikunapareddi/agent-idempotency-kit) — Exactly-once tool execution: the same call twice runs once, with a replayable ledger.
+- [agent-model-router](https://github.com/balasaikunapareddi/agent-model-router) — Routes each task to the cheapest model that can do it, escalates when the quality gate fails, and ledgers the cost against an always-big-model baseline.
+- [agent-prompt-versioning](https://github.com/balasaikunapareddi/agent-prompt-versioning) — System prompts under version control: every change is eval-scored before promotion, and regressions roll back automatically with a changelog entry.
+- [agent-memory](https://github.com/balasaikunapareddi/agent-memory) — Agent memory end to end: session and long-term memory across restarts, learned preferences, and context compaction that keeps the facts.
+- [agent-email-triage](https://github.com/balasaikunapareddi/agent-email-triage) — Inbox triage with a deadline-aware priority queue and draft replies that are never sent — a human always sends.
+- [agent-red-team-tester](https://github.com/balasaikunapareddi/agent-red-team-tester) — Attacker/target/judge red-teaming: prompt injections and jailbreaks scored per category, with a hardening checklist.
+- [agent-interview-prep](https://github.com/balasaikunapareddi/agent-interview-prep) — Resume plus job description → gap analysis backed by resume evidence, mapped questions, a scored mock interview, and a study plan.
+- [agent-data-simulator](https://github.com/balasaikunapareddi/agent-data-simulator) — Generates messy, realistic enterprise data (retry duplicates, unit changes, NULLs, legacy keys) plus a benchmark with gold answers, so you can test agents against data that fights back. Live Gemini: 9/10, zero traps.
+- [agent-eval-harness](https://github.com/balasaikunapareddi/agent-eval-harness) — Regression tests for agent configs: declarative YAML scenarios, every run fingerprinted (prompt + tool schemas), one command diffs two runs and names every regression. CI gate included.
+- [agent-tool-firewall](https://github.com/balasaikunapareddi/agent-tool-firewall) — Tool-permission firewall for agents: least-privilege scopes, credential isolation, approval gates, sandboxed execution, and a full audit trail. Demo blocks 5/5 prompt-injected attacks that succeed without it.
+- [agent-self-learning](https://github.com/balasaikunapareddi/agent-self-learning) — Self-improving support agent: grades its own replies, extracts lessons into a store with helped/hurt accounting, and retrieves them next time. Memory-only learning — no self-modifying code.
 - *State-machine booking (pattern, no link)* — A booking agent where the flow lives in a deterministic state machine, not in the prompt: typed tools, an adapter layer for chained legacy APIs, and a structured UI envelope. The private reference build stays private; the pattern is what the starter recipes teach.
 
 ### Coming soon
