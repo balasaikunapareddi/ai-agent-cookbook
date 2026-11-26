@@ -105,6 +105,23 @@ Production patterns:
 - [agent-persistent](https://github.com/balasaikunapareddi/agent-persistent) — A local, always-on persistent agent (LangGraph + LiteLLM): goals live in SQLite and survive restarts, a heartbeat tick works the most due goal and the agent schedules its own next check-in, markdown playbooks guide the work, a nightly "dreaming" pass consolidates memory (dedupe + supersede, nothing deleted), and watch mode speaks up only when it can help — notifications go to a local outbox, never sent anywhere.
 - *State-machine booking (pattern, no link)* — A booking agent where the flow lives in a deterministic state machine, not in the prompt: typed tools, an adapter layer for chained legacy APIs, and a structured UI envelope. The private reference build stays private; the pattern is what the starter recipes teach.
 
+## 📚 Go deeper — the foundations underneath the recipes
+
+The cookbook teaches agents by building them. The curriculum below
+teaches the foundations underneath them, from scratch. It is not a
+cookbook recipe, and it is not copied in here — it lives in its own
+fork, so the credit stays with its author and his updates can be
+pulled in.
+
+- [ai-engineering-from-scratch](https://github.com/balasaikunapareddi/ai-engineering-from-scratch) — My fork of Rohit Ghumare's [ai-engineering-from-scratch](https://github.com/rohitg00/ai-engineering-from-scratch) (MIT licensed, 542 lessons across 20 phases, ~80K stars): math foundations through transformers, RAG, agents, and MCP, in Python/TypeScript/Rust/Julia/Go. Every lesson follows "here's the problem → build the small version from scratch → here's where production tools do the same thing."
+
+Two pairings worth reading side by side:
+
+- Their **Project 03 · Tool Call Firewall** (Rust: role checks and approval receipts) ↔ my applied version, [agent-tool-firewall](https://github.com/balasaikunapareddi/agent-tool-firewall) — the from-scratch lesson next to the production pattern.
+- Their **Project 01 · Retrieval Evaluation Lab** (ranking metrics and regression checks) ↔ my [agent-eval-harness](https://github.com/balasaikunapareddi/agent-eval-harness) — the same evaluation problem, built from scratch vs. built as a regression-test harness.
+
+For the applied, lab-based counterpart, see [agentic-ai-training](https://github.com/balasaikunapareddi/agentic-ai-training) above — day-wise labs built from real portfolio agents, rather than fundamentals.
+
 ### Coming soon
 
 `always-on/` · `mcp/` · `rag/` · `voice/` · `agent-skills/` — folders
